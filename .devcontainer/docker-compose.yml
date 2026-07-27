@@ -1,0 +1,16 @@
+services:
+  api:
+    container_name: gestao-convenios-api
+    image: mcr.microsoft.com/devcontainers/java:1-21-bullseye
+    restart: unless-stopped
+    volumes:
+      - ../:/workspaces/gestao-convenios-api
+    command: sleep infinity # Keep the container running
+    ports:
+      - "8081:8080"
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    external: true
