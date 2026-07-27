@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example.gestaoconvenios</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>gestao-convenios-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
+	<name>gestao-convenios-api</name>
+	<description>API Gestão de Convênios</description>
 	<url/>
 	<licenses>
 		<license/>

@@ -1,4 +1,4 @@
-package com.example.gestaoconvenios.demo;
+package com.example.gestaoconvenios;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
