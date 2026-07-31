@@ -1,4 +1,4 @@
-package com.example.gestaoconvenios.domain.convenios.entity;
+package com.example.gestaoconvenios.domain.entity.convenios;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -49,11 +49,11 @@ public class EmpresaConveniada {
         return endereco;
     }
 
-    public boolean isAtiva() {
+    public boolean getAtiva() {
         return ativa;
     }
 
-    public boolean isExcluida() {
+    public boolean getExcluida() {
         return excluida;
     }
 
@@ -95,6 +95,10 @@ public class EmpresaConveniada {
 
     public void setContratos(List<Contrato> contratos) {
         this.contratos = contratos;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
     
 }

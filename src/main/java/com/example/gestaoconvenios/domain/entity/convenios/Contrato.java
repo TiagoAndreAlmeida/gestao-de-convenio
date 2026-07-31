@@ -1,4 +1,4 @@
-package com.example.gestaoconvenios.domain.convenios.entity;
+package com.example.gestaoconvenios.domain.entity.convenios;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
