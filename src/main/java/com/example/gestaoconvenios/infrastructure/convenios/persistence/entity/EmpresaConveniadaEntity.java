@@ -73,11 +73,11 @@ public class EmpresaConveniadaEntity {
         return endereco;
     }
 
-    public boolean isAtiva() {
+    public boolean getAtiva() {
         return ativa;
     }
 
-    public boolean isExcluida() {
+    public boolean getExcluida() {
         return excluida;
     }
 

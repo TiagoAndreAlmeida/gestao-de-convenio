@@ -33,6 +33,18 @@ public class EmpresaConveniada {
         this.contratos = contratos;
     }
 
+    public EmpresaConveniada(Long id, String razaoSocial, String cnpj, String endereco, boolean ativa, boolean excluida,
+            LocalDateTime criadaEm, LocalDateTime atualizadaEm) {
+        this.id = id;
+        this.razaoSocial = razaoSocial;
+        this.cnpj = cnpj;
+        this.endereco = endereco;
+        this.ativa = ativa;
+        this.excluida = excluida;
+        this.criadaEm = criadaEm;
+        this.atualizadaEm = atualizadaEm;
+    }
+
     public Long getId() {
         return id;
     }

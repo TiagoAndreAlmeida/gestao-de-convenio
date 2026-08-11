@@ -38,11 +38,11 @@ public class ContatoEntity {
     @JoinColumn(name = "empresa_conveniada_id", nullable = false)
     private EmpresaConveniadaEntity empresaConveniada;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "criado_em", nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime criadoEm;
 
-    @Column(nullable = false)
+    @Column(name = "atualizado_em", nullable = false)
     @UpdateTimestamp
     private LocalDateTime atualizadoEm;
 
