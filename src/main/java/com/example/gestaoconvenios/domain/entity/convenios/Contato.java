@@ -3,6 +3,7 @@ package com.example.gestaoconvenios.domain.entity.convenios;
 import java.time.LocalDateTime;
 
 public class Contato {
+    private Long id;
     private String nome, cargo, email, telefone;
     private EmpresaConveniada empresaConveniada;
     private LocalDateTime criadoEm, atualizadoEm;
@@ -10,8 +11,10 @@ public class Contato {
     public Contato() {
     }
     
-    public Contato(String nome, String cargo, String email, String telefone, EmpresaConveniada empresaConveniada,
+    public Contato(Long id, String nome, String cargo, String email, String telefone, EmpresaConveniada empresaConveniada,
             LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
+        
+        this.id = id;
         this.nome = nome;
         this.cargo = cargo;
         this.email = email;
@@ -19,6 +22,10 @@ public class Contato {
         this.empresaConveniada = empresaConveniada;
         this.criadoEm = criadoEm;
         this.atualizadoEm = atualizadoEm;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
