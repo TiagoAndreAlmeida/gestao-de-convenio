@@ -2,7 +2,7 @@ package com.example.gestaoconvenios.infrastructure.convenios.controller.empresa.
 
 import java.util.List;
 
-import com.example.gestaoconvenios.infrastructure.convenios.controller.contato.CadastraContatoRequest;
+import com.example.gestaoconvenios.infrastructure.convenios.controller.contato.request.CadastraContatoRequest;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;

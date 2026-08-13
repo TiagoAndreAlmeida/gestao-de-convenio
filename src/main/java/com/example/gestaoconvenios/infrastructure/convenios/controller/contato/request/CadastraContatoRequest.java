@@ -1,4 +1,4 @@
-package com.example.gestaoconvenios.infrastructure.convenios.controller.contato;
+package com.example.gestaoconvenios.infrastructure.convenios.controller.contato.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
