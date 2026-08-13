@@ -1,10 +1,13 @@
 package com.example.gestaoconvenios.infrastructure.convenios.persistence.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.example.gestaoconvenios.domain.entity.convenios.Contato;
 import com.example.gestaoconvenios.domain.entity.convenios.EmpresaConveniada;
 import com.example.gestaoconvenios.infrastructure.convenios.persistence.entity.ContatoEntity;
 import com.example.gestaoconvenios.infrastructure.convenios.persistence.entity.EmpresaConveniadaEntity;
 
+@Component
 public class ContatoMapper {
     public ContatoEntity toEntity(Contato domain, EmpresaConveniadaEntity empresaConveniadaEntity) {
         return new ContatoEntity(
