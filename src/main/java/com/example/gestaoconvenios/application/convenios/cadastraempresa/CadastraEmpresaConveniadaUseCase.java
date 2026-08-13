@@ -37,7 +37,7 @@ public class CadastraEmpresaConveniadaUseCase {
         empresa.setRazaoSocial(command.razaoSocial());
         empresa.setEndereco(command.endereco());
 
-        this.empresaRepository.save(empresa);
+        EmpresaConveniada saved = this.empresaRepository.save(empresa);
 
         List<Contato> contatos = command.contatos().stream().map(item -> {
             Contato contato = new Contato();
@@ -45,7 +45,7 @@ public class CadastraEmpresaConveniadaUseCase {
             contato.setEmail(item.email());
             contato.setTelefone(item.telefone());
             contato.setCargo(item.cargo());
-            contato.setEmpresaConveniada(empresa);
+            contato.setEmpresaConveniada(saved);
             return contato;
         }).toList();
 

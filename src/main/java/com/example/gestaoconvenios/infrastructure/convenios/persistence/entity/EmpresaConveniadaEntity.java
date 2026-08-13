@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
 public class EmpresaConveniadaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, length = 250, name = "razao_social")
     private String razaoSocial;
@@ -45,7 +45,7 @@ public class EmpresaConveniadaEntity {
     protected EmpresaConveniadaEntity() {
     }
 
-    public EmpresaConveniadaEntity(long id, String razaoSocial, String cnpj, String endereco, boolean ativa,
+    public EmpresaConveniadaEntity(Long id, String razaoSocial, String cnpj, String endereco, boolean ativa,
             boolean excluida, LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
         this.id = id;
         this.razaoSocial = razaoSocial;
@@ -57,7 +57,7 @@ public class EmpresaConveniadaEntity {
         this.atualizadoEm = atualizadoEm;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
