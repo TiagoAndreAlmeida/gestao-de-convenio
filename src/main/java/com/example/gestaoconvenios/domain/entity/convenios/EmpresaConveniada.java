@@ -12,7 +12,7 @@ public class EmpresaConveniada {
     private boolean ativa;
     private boolean excluida;
     private LocalDateTime criadaEm;
-    private LocalDateTime atualizadaEm;
+    private LocalDateTime atualizadoEm;
     List<Contato> contatos = new ArrayList<>();
     List<Contrato> contratos = new ArrayList<>();
 
@@ -20,7 +20,7 @@ public class EmpresaConveniada {
     }
 
     public EmpresaConveniada(Long id, String razaoSocial, String cnpj, String endereco, boolean ativa, boolean excluida,
-            LocalDateTime criadaEm, LocalDateTime atualizadaEm, List<Contato> contatos, List<Contrato> contratos) {
+            LocalDateTime criadaEm, LocalDateTime atualizadoEm, List<Contato> contatos, List<Contrato> contratos) {
         this.id = id;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
@@ -28,13 +28,13 @@ public class EmpresaConveniada {
         this.ativa = ativa;
         this.excluida = excluida;
         this.criadaEm = criadaEm;
-        this.atualizadaEm = atualizadaEm;
+        this.atualizadoEm = atualizadoEm;
         this.contatos = contatos;
         this.contratos = contratos;
     }
 
     public EmpresaConveniada(Long id, String razaoSocial, String cnpj, String endereco, boolean ativa, boolean excluida,
-            LocalDateTime criadaEm, LocalDateTime atualizadaEm) {
+            LocalDateTime criadaEm, LocalDateTime atualizadoEm) {
         this.id = id;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
@@ -42,7 +42,7 @@ public class EmpresaConveniada {
         this.ativa = ativa;
         this.excluida = excluida;
         this.criadaEm = criadaEm;
-        this.atualizadaEm = atualizadaEm;
+        this.atualizadoEm = atualizadoEm;
     }
 
     public Long getId() {
@@ -73,8 +73,8 @@ public class EmpresaConveniada {
         return criadaEm;
     }
 
-    public LocalDateTime getAtualizadaEm() {
-        return atualizadaEm;
+    public LocalDateTime getatualizadoEm() {
+        return atualizadoEm;
     }
 
     public List<Contato> getContatos() {

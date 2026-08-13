@@ -37,7 +37,7 @@ public class EmpresaConveniadaController {
         );
         EmpresaConveniada empresa = this.cadastraEmpresaConveniadaUseCase.execute(command);
         CadastraEmpresaConveniadaResponse response = new CadastraEmpresaConveniadaResponse(
-            empresa.getRazaoSocial(), empresa.getCnpj(), empresa.getEndereco(), empresa.getAtiva(), empresa.getCriadaEm(), empresa.getAtualizadaEm()
+            empresa.getRazaoSocial(), empresa.getCnpj(), empresa.getEndereco(), empresa.getAtiva(), empresa.getCriadaEm(), empresa.getatualizadoEm()
         );
         return ResponseEntity.status(HttpStatus.CREATED).body(response); 
  

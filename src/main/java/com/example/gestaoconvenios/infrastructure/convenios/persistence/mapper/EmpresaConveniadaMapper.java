@@ -30,7 +30,7 @@ public class EmpresaConveniadaMapper {
             domain.getAtiva(), 
             domain.getExcluida(), 
             domain.getCriadaEm(), 
-            domain.getAtualizadaEm()
+            domain.getatualizadoEm()
         );
 
     }
