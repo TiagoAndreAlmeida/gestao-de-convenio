@@ -51,7 +51,7 @@ public class CadastraEmpresaConveniadaUseCase {
 
         this.contatoRepository.saveAll(contatos);
 
-        return empresa;
+        return saved;
 
     }
 }
