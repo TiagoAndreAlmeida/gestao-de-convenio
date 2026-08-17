@@ -24,6 +24,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.annotation.Description;
 
 import com.example.gestaoconvenios.application.contatos.CadastraContatoCommand;
+import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaJaCadastradaException;
 import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaSemContatoException;
 import com.example.gestaoconvenios.domain.entity.convenios.EmpresaConveniada;
 import com.example.gestaoconvenios.domain.repository.ContatoRepository;
@@ -106,5 +107,29 @@ public class CadastraEmpresaConveniadaUseCaseTest {
     void shoudThrowEmpresaSemContatoExecption(CadastraEmpresaConveniadaCommand command) {
         EmpresaSemContatoException execption = assertThrows(EmpresaSemContatoException.class, () -> useCase.execute(command));
         assertThat(execption.getMessage()).isEqualTo("Uma empresa precisa ter pelo menos um contato");
+    }
+
+    @Test
+    @DisplayName("should throw EmpresaJaCadastradaExecption")
+    void shoudThrowEmpresaJaCadastradaExecption() {
+        CadastraContatoCommand contatoCommand = new CadastraContatoCommand(
+            "João", 
+            "Diretor", 
+            "joao@email.com", 
+            "1234567899", 
+            null
+        );
+
+        CadastraEmpresaConveniadaCommand empresaCommand = new CadastraEmpresaConveniadaCommand(
+            "Empresa XPTO", 
+            "1234566542", 
+            "Av zona sul", 
+            List.of(contatoCommand)
+        );
+
+        when(empresaConveniadaRepository.existsByCnpj(empresaCommand.cnpj())).thenReturn(true);
+
+        EmpresaJaCadastradaException exception = assertThrows(EmpresaJaCadastradaException.class, () -> useCase.execute(empresaCommand));
+        assertThat(exception.getMessage()).isEqualTo("Já existe uma empresa com este CNPJ no sistema: "+empresaCommand.cnpj());
     }
 }
