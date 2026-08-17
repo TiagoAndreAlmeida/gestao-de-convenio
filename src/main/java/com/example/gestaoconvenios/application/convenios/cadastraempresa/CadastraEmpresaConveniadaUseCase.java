@@ -24,7 +24,7 @@ public class CadastraEmpresaConveniadaUseCase {
     public EmpresaConveniada execute(
         CadastraEmpresaConveniadaCommand command
     ) {
-        if (command.contatos().isEmpty() || command.contatos() == null) {
+        if (command.contatos() == null || command.contatos().isEmpty()) {
             throw new EmpresaSemContatoException();
         }
         
