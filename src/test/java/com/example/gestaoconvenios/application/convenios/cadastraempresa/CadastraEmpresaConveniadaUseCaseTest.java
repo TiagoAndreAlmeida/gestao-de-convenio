@@ -37,7 +37,7 @@ public class CadastraEmpresaConveniadaUseCaseTest {
     CadastraEmpresaConveniadaUseCase useCase;
 
     private static Stream<CadastraEmpresaConveniadaCommand> cadastraEmpresacommandSemContato() {
-    return Stream.of(
+        return Stream.of(
             new CadastraEmpresaConveniadaCommand(
                     "Empresa XPTO",
                     "1234566542",
