@@ -19,7 +19,7 @@ public record CadastraEmpresaConveniadaResponse(
     boolean ativa,
     
     @Schema(description = "Data e hora de criação do registro")
-    LocalDateTime criadaEm,
+    LocalDateTime criadoEm,
     
     @Schema(description = "Data e hora da ultima atualização do registro")
     LocalDateTime atualizadoEm

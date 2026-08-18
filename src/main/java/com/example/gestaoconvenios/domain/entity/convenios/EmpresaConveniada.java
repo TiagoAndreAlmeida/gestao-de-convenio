@@ -11,7 +11,7 @@ public class EmpresaConveniada {
     private String endereco;
     private boolean ativa;
     private boolean excluida;
-    private LocalDateTime criadaEm;
+    private LocalDateTime criadoEm;
     private LocalDateTime atualizadoEm;
     List<Contato> contatos = new ArrayList<>();
     List<Contrato> contratos = new ArrayList<>();
@@ -20,28 +20,28 @@ public class EmpresaConveniada {
     }
 
     public EmpresaConveniada(Long id, String razaoSocial, String cnpj, String endereco, boolean ativa, boolean excluida,
-            LocalDateTime criadaEm, LocalDateTime atualizadoEm, List<Contato> contatos, List<Contrato> contratos) {
+            LocalDateTime criadoEm, LocalDateTime atualizadoEm, List<Contato> contatos, List<Contrato> contratos) {
         this.id = id;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
         this.endereco = endereco;
         this.ativa = ativa;
         this.excluida = excluida;
-        this.criadaEm = criadaEm;
+        this.criadoEm = criadoEm;
         this.atualizadoEm = atualizadoEm;
         this.contatos = contatos;
         this.contratos = contratos;
     }
 
     public EmpresaConveniada(Long id, String razaoSocial, String cnpj, String endereco, boolean ativa, boolean excluida,
-            LocalDateTime criadaEm, LocalDateTime atualizadoEm) {
+            LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
         this.id = id;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
         this.endereco = endereco;
         this.ativa = ativa;
         this.excluida = excluida;
-        this.criadaEm = criadaEm;
+        this.criadoEm = criadoEm;
         this.atualizadoEm = atualizadoEm;
     }
 
@@ -69,8 +69,8 @@ public class EmpresaConveniada {
         return excluida;
     }
 
-    public LocalDateTime getCriadaEm() {
-        return criadaEm;
+    public LocalDateTime getCriadoEm() {
+        return criadoEm;
     }
 
     public LocalDateTime getatualizadoEm() {
