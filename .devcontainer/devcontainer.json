@@ -20,7 +20,7 @@
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
-			"extensions": ["vmware.vscode-spring-boot"]
+			"extensions": ["vmware.vscode-spring-boot", "continue.continue"]
 		}
 	}
 }
