@@ -1,5 +1,7 @@
 package com.example.gestaoconvenios.infrastructure.convenios.persistence.adapter;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 import com.example.gestaoconvenios.domain.entity.convenios.EmpresaConveniada;
@@ -28,6 +30,11 @@ public class EmpresaConveniadaRepositoryAdapter implements EmpresaConveniadaRepo
         EmpresaConveniadaEntity entity = this.empresaConveniadaMapper.toEntity(empresaConveniada);
         EmpresaConveniadaEntity savedEntity = this.empresaConveniadaJpaRepository.save(entity);
         return this.empresaConveniadaMapper.toDomain(savedEntity);
+    }
+
+    @Override
+    public Optional<EmpresaConveniada> findById(Long id) {
+        return this.empresaConveniadaJpaRepository.findById(id).map(this.empresaConveniadaMapper::toDomain);
     }
 
 }
