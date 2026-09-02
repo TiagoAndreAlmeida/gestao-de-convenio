@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -77,5 +78,34 @@ public class EmpresaConveniadaRepositoryAdapterTest {
         assertThat(savedEmpresa.getRazaoSocial()).isEqualTo("Empresa XPTO");
         assertThat(savedEmpresa.getCnpj()).isEqualTo("12345678901234");
         assertThat(savedEmpresa.getAtiva()).isEqualTo(true);
+    }
+
+    @Test
+    @Description("Should return the empresa conveniada when findById is called with an existing ID")
+    void shouldReturnEmpresaConveniadaWhenFoundById() {
+        EmpresaConveniada domainEntity = new EmpresaConveniada(
+            1L, "Empresa XPTO", "12345678901234", "Av zona sul", true, false, LocalDateTime.now(), LocalDateTime.now()
+        );
+        EmpresaConveniadaEntity entity = new EmpresaConveniadaEntity(
+            1L, "Empresa XPTO", "12345678901234", "Av zona sul", true, false, LocalDateTime.now(), LocalDateTime.now()
+        );
+        
+        when(empresaConveniadaJpaRepository.findById(1L)).thenReturn(Optional.of(entity));
+        when(empresaConveniadaMapper.toDomain(entity)).thenReturn(domainEntity);
+        
+        Optional<EmpresaConveniada> result = empresaConveniadaRepositoryAdapter.findById(1L);
+        
+        assertThat(result).isPresent();
+        assertThat(result.get()).isEqualTo(domainEntity);
+    }
+
+    @Test
+    @Description("Should return empty Optional when findById is called with non-existing ID")
+    void shouldReturnEmptyOptionalWhenNotExistsById() {
+        when(empresaConveniadaJpaRepository.findById(999L)).thenReturn(Optional.empty());
+        
+        Optional<EmpresaConveniada> result = empresaConveniadaRepositoryAdapter.findById(999L);
+        
+        assertThat(result).isEmpty();
     }
 }
