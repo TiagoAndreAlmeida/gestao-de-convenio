@@ -46,4 +46,12 @@ public class ContatoRepositoryAdapter implements ContatoRepository {
         contatoJpaRepository.saveAll(entities);
     }
 
+    @Override
+    public Contato save(Contato contato) {
+        EmpresaConveniadaEntity empresa = this.empresaConveniadaJpaRepository.getReferenceById(contato.getEmpresaConveniada().getId());
+        ContatoEntity entity = this.contatoMapper.toEntity(contato, empresa);
+        ContatoEntity savedEntity = contatoJpaRepository.save(entity);
+        return this.contatoMapper.toDomain(savedEntity, contato.getEmpresaConveniada());
+    }
+
 }
