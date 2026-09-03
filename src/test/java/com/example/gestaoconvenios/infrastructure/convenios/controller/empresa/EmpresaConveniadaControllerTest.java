@@ -45,8 +45,8 @@ public class EmpresaConveniadaControllerTest {
         CadastraContatoRequest contatoRequest = new CadastraContatoRequest("", "", "", "");
         return Stream.of(
             new CadastraEmpresaRequest(null, null, null, null),
-            new CadastraEmpresaRequest("", "", "", new ArrayList()),
-            new CadastraEmpresaRequest("Empresa XPTO", "1234567865", "Rua z", new ArrayList()),
+            new CadastraEmpresaRequest("", "", "", new ArrayList<CadastraContatoRequest>()),
+            new CadastraEmpresaRequest("Empresa XPTO", "1234567865", "Rua z", new ArrayList<CadastraContatoRequest>()),
             new CadastraEmpresaRequest("Empresa XPTO", "1234567865", "Rua z", List.of(contatoRequest))
         );
     }
