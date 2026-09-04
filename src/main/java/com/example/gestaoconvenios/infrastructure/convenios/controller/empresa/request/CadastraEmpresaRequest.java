@@ -9,7 +9,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
-@Schema(description = "Dados de entrada para cadastro de uma nova Empresa conveniada")
+@Schema(name = "Cadastro Empresa Conveniada", description = "Dados de entrada para cadastro de uma nova Empresa conveniada")
 public record CadastraEmpresaRequest(
     @Schema(description = "Razão social oficial da empresa", example = "Parceiro de Negócios Brasil LTDA")
     @NotBlank(message = "razaoSocial é Obrigatório")

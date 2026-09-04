@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@Schema(description = "Dados reteornados após o sucesso do cadastro da empresa")
+@Schema(name = "Response Empresa Conveniada", description = "Dados retornados após o sucesso do cadastro da empresa")
 public record CadastraEmpresaConveniadaResponse(
     @Schema(description = "Razão Social registrada", example = "Parceiro  de Negócios Brasil LTDA")
     String razaoSocial,
