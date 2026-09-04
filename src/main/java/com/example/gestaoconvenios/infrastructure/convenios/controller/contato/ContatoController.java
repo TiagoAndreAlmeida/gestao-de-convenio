@@ -1,7 +1,6 @@
 package com.example.gestaoconvenios.infrastructure.convenios.controller.contato;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.gestaoconvenios.application.contatos.CadastraContatoCommand;
@@ -15,9 +14,11 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -60,7 +61,7 @@ public class ContatoController {
         }
     )
     public ResponseEntity<CadastraContatoResponse> cadastraContato(
-        @RequestParam Long empresaId, @RequestBody CadastraContatoRequest request
+        @PathVariable Long empresaId, @Valid @RequestBody CadastraContatoRequest request
     ) {
         CadastraContatoCommand command = new CadastraContatoCommand(
             request.nome(),
