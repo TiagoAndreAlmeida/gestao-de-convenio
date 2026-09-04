@@ -1,6 +1,7 @@
 package com.example.gestaoconvenios.application.contatos;
 
-import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaNotFound;
+import com.example.gestaoconvenios.application.contatos.exceptions.ContatoAlreadyExistsException;
+import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaNotFoundException;
 import com.example.gestaoconvenios.domain.entity.convenios.Contato;
 import com.example.gestaoconvenios.domain.entity.convenios.EmpresaConveniada;
 import com.example.gestaoconvenios.domain.repository.ContatoRepository;
@@ -17,7 +18,11 @@ public class CadastraContatoUseCase {
 
     public Contato execute(CadastraContatoCommand command) {
         EmpresaConveniada empresa = this.empresaConveniadaRepository.findById(command.empresaConveniadaId())
-            .orElseThrow(() -> new EmpresaNotFound(command.empresaConveniadaId()));
+            .orElseThrow(() -> new EmpresaNotFoundException(command.empresaConveniadaId()));
+
+        if(contatoRepository.existsByEmail(command.email())) {
+            throw new ContatoAlreadyExistsException(command.email());
+        }
 
         Contato contato = new Contato();
         contato.setNome(command.nome());
