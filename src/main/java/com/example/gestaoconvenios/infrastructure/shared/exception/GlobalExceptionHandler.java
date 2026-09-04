@@ -10,7 +10,9 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.example.gestaoconvenios.application.contatos.exceptions.ContatoAlreadyExistsException;
 import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaJaCadastradaException;
+import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaNotFoundException;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -33,6 +35,32 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(EmpresaJaCadastradaException.class)
     public ResponseEntity<ErrorResponse> handleEmpresaJaCadastrada(EmpresaJaCadastradaException exception) {
+        ErrorResponse response = new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                exception.getMessage(),
+                LocalDateTime.now()
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(response);
+    }
+
+    @ExceptionHandler(EmpresaNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleEmpresaNotFound(EmpresaNotFoundException exception) {
+        ErrorResponse response = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                exception.getMessage(),
+                LocalDateTime.now()
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(response);
+    }
+
+    @ExceptionHandler(ContatoAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleContatoAlreadyExists(ContatoAlreadyExistsException exception) {
         ErrorResponse response = new ErrorResponse(
                 HttpStatus.CONFLICT.value(),
                 exception.getMessage(),
