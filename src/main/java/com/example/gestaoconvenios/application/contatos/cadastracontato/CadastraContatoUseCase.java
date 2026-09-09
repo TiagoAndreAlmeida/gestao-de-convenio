@@ -1,4 +1,4 @@
-package com.example.gestaoconvenios.application.contatos;
+package com.example.gestaoconvenios.application.contatos.cadastracontato;
 
 import com.example.gestaoconvenios.application.contatos.exceptions.ContatoAlreadyExistsException;
 import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaNotFoundException;

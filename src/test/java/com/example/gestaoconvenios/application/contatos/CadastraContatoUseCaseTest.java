@@ -18,6 +18,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.annotation.Description;
 
+import com.example.gestaoconvenios.application.contatos.cadastracontato.CadastraContatoCommand;
+import com.example.gestaoconvenios.application.contatos.cadastracontato.CadastraContatoUseCase;
 import com.example.gestaoconvenios.application.contatos.exceptions.ContatoAlreadyExistsException;
 import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaNotFoundException;
 import com.example.gestaoconvenios.domain.entity.convenios.Contato;

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.gestaoconvenios.application.contatos.CadastraContatoCommand;
+import com.example.gestaoconvenios.application.contatos.cadastracontato.CadastraContatoCommand;
 import com.example.gestaoconvenios.application.convenios.cadastraempresa.CadastraEmpresaConveniadaCommand;
 import com.example.gestaoconvenios.application.convenios.cadastraempresa.CadastraEmpresaConveniadaUseCase;
 import com.example.gestaoconvenios.domain.entity.convenios.EmpresaConveniada;

@@ -3,7 +3,7 @@ package com.example.gestaoconvenios.infrastructure.convenios;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.example.gestaoconvenios.application.contatos.CadastraContatoUseCase;
+import com.example.gestaoconvenios.application.contatos.cadastracontato.CadastraContatoUseCase;
 import com.example.gestaoconvenios.application.convenios.cadastraempresa.CadastraEmpresaConveniadaUseCase;
 import com.example.gestaoconvenios.domain.repository.ContatoRepository;
 import com.example.gestaoconvenios.domain.repository.EmpresaConveniadaRepository;
