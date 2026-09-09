@@ -1,4 +1,4 @@
-package com.example.gestaoconvenios.application.contatos.exceptions;
+package com.example.gestaoconvenios.application.convenios.contatos.exceptions;
 
 public class ContatoAlreadyExistsException extends RuntimeException {
     public ContatoAlreadyExistsException(String email) {

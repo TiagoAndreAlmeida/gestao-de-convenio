@@ -1,4 +1,4 @@
-package com.example.gestaoconvenios.application.contatos.cadastracontato;
+package com.example.gestaoconvenios.application.convenios.contatos.cadastracontato;
 
 public record CadastraContatoCommand(
     String nome, 

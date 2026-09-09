@@ -10,7 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.example.gestaoconvenios.application.contatos.exceptions.ContatoAlreadyExistsException;
+import com.example.gestaoconvenios.application.convenios.contatos.exceptions.ContatoAlreadyExistsException;
 import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaJaCadastradaException;
 import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaNotFoundException;
 
