@@ -17,6 +17,7 @@ public class BuscaContatosUseCase {
     }
 
     public PaginatedResult<Contato> execute(BuscaContatosCommand command) {
+        // TODO: talvez apenas um metodo exists pelo id já fosse o suficiente para saber se a empresa existe. já que não fazemos uso dela.
         EmpresaConveniada empresaConveniada = empresaConveniadaRepository.findById(command.empresaConveniadaId())
             .orElseThrow(() -> new EmpresaNotFoundException(command.empresaConveniadaId()));
 
