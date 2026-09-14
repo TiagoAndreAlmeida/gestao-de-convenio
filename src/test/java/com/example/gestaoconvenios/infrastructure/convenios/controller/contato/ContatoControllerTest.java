@@ -24,9 +24,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.http.MediaType;
 
-import com.example.gestaoconvenios.application.convenios.contatos.cadastracontato.CadastraContatoCommand;
-import com.example.gestaoconvenios.application.convenios.contatos.cadastracontato.CadastraContatoUseCase;
-import com.example.gestaoconvenios.application.convenios.contatos.exceptions.ContatoAlreadyExistsException;
+import com.example.gestaoconvenios.application.convenios.cadastracontato.CadastraContatoCommand;
+import com.example.gestaoconvenios.application.convenios.cadastracontato.CadastraContatoUseCase;
+import com.example.gestaoconvenios.application.convenios.exceptions.ContatoAlreadyExistsException;
 import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaNotFoundException;
 import com.example.gestaoconvenios.domain.entity.convenios.Contato;
 import com.example.gestaoconvenios.domain.entity.convenios.EmpresaConveniada;

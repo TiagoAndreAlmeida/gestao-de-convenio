@@ -1,4 +1,4 @@
-package com.example.gestaoconvenios.application.convenios.contatos.buscacontatos;
+package com.example.gestaoconvenios.application.convenios.buscacontatos;
 
 import com.example.gestaoconvenios.application.convenios.exceptions.EmpresaNotFoundException;
 import com.example.gestaoconvenios.application.shared.pagination.PaginatedResult;

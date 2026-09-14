@@ -1,4 +1,4 @@
-package com.example.gestaoconvenios.application.convenios.contatos.buscacontatos;
+package com.example.gestaoconvenios.application.convenios.buscacontatos;
 
 public record BuscaContatosCommand(
     Long empresaConveniadaId,

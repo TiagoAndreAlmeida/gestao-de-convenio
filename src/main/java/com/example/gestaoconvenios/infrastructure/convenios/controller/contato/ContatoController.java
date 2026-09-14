@@ -3,10 +3,10 @@ package com.example.gestaoconvenios.infrastructure.convenios.controller.contato;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.gestaoconvenios.application.convenios.contatos.buscacontatos.BuscaContatosCommand;
-import com.example.gestaoconvenios.application.convenios.contatos.buscacontatos.BuscaContatosUseCase;
-import com.example.gestaoconvenios.application.convenios.contatos.cadastracontato.CadastraContatoCommand;
-import com.example.gestaoconvenios.application.convenios.contatos.cadastracontato.CadastraContatoUseCase;
+import com.example.gestaoconvenios.application.convenios.buscacontatos.BuscaContatosCommand;
+import com.example.gestaoconvenios.application.convenios.buscacontatos.BuscaContatosUseCase;
+import com.example.gestaoconvenios.application.convenios.cadastracontato.CadastraContatoCommand;
+import com.example.gestaoconvenios.application.convenios.cadastracontato.CadastraContatoUseCase;
 import com.example.gestaoconvenios.application.shared.pagination.PaginatedResult;
 import com.example.gestaoconvenios.domain.entity.convenios.Contato;
 import com.example.gestaoconvenios.infrastructure.convenios.controller.contato.request.BuscaContatosRequest;

@@ -1,4 +1,4 @@
-package com.example.gestaoconvenios.application.convenios.contatos.buscacontatos;
+package com.example.gestaoconvenios.application.convenios.buscacontatos;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
