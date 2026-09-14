@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.eq;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -13,16 +14,23 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.annotation.Description;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
+import com.example.gestaoconvenios.application.shared.pagination.PaginatedResult;
 import com.example.gestaoconvenios.domain.entity.convenios.Contato;
 import com.example.gestaoconvenios.domain.entity.convenios.EmpresaConveniada;
 import com.example.gestaoconvenios.infrastructure.convenios.persistence.entity.ContatoEntity;
 import com.example.gestaoconvenios.infrastructure.convenios.persistence.entity.EmpresaConveniadaEntity;
 import com.example.gestaoconvenios.infrastructure.convenios.persistence.mapper.ContatoMapper;
+import com.example.gestaoconvenios.infrastructure.convenios.persistence.mapper.EmpresaConveniadaMapper;
 import com.example.gestaoconvenios.infrastructure.convenios.persistence.repository.ContatoJpaRepository;
 import com.example.gestaoconvenios.infrastructure.convenios.persistence.repository.EmpresaConveniadaJpaRepository;
 
@@ -36,6 +44,9 @@ class ContatoRepositoryAdapterTest {
 
     @Mock
     private ContatoMapper contatoMapper;
+
+    @Mock
+    private EmpresaConveniadaMapper empresaConveniadaMapper;
 
     @Mock
     private EmpresaConveniadaJpaRepository empresaConveniadaJpaRepository;
@@ -209,5 +220,50 @@ class ContatoRepositoryAdapterTest {
     void shouldThrowExceptionWhenListIsNull() {
         assertThatThrownBy(() -> contatoRepositoryAdapter.saveAll(null))
             .isInstanceOf(NullPointerException.class);
+    }
+
+    @Test
+    @Description("Should return paginated result of contatos for a given empresa")
+    void shouldReturnPaginatedResultOfContatosForGivenEmpresa() {
+        Long empresaId = 1L;
+        String search = "João";
+        int page = 0;
+        int size = 10;
+        int totalElements = 10;
+        EmpresaConveniadaEntity empresaEntity = criarEmpresaEntity();
+        EmpresaConveniada empresaDomain = criarEmpresaDomain();
+        ContatoEntity contatoEntity = criarContatoEntity(empresaEntity);
+        Contato contatoDomain = criarContatoDomain(empresaDomain);
+        Page<ContatoEntity> pagedContatoEntities = new PageImpl<ContatoEntity>(
+            List.of(contatoEntity),
+            PageRequest.of(page, size), 
+            totalElements
+        );
+
+        when(contatoJpaRepository.findByEmpresaConveniada(empresaId, search, PageRequest.of(page, size)))
+            .thenReturn(pagedContatoEntities);
+        when(empresaConveniadaJpaRepository.getReferenceById(empresaId))
+            .thenReturn(empresaEntity);
+        when(empresaConveniadaMapper.toDomain(empresaEntity))
+            .thenReturn(empresaDomain);
+        when(contatoMapper.toDomain(contatoEntity, empresaDomain))
+            .thenReturn(contatoDomain);
+
+        PaginatedResult<Contato> result = contatoRepositoryAdapter.findByEmpresaConveniada(empresaId, search, page, size);
+
+        assertThat(result.content()).containsExactly(contatoDomain);
+        assertThat(result.page()).isEqualTo(page);
+        assertThat(result.size()).isEqualTo(size);
+        assertThat(result.totalElements()).isEqualTo(totalElements);
+        assertThat(result.totalPages()).isEqualTo(1);
+
+        ArgumentCaptor<Pageable> pageableCaptor = ArgumentCaptor.forClass(Pageable.class);
+        verify(contatoJpaRepository).findByEmpresaConveniada(eq(empresaId), eq(search), pageableCaptor.capture());
+        assertThat(pageableCaptor.getValue().getPageNumber()).isEqualTo(page);
+        assertThat(pageableCaptor.getValue().getPageSize()).isEqualTo(size);
+
+        verify(empresaConveniadaJpaRepository).getReferenceById(empresaId);
+        verify(empresaConveniadaMapper).toDomain(empresaEntity);
+        verify(contatoMapper).toDomain(contatoEntity, empresaDomain);
     }
 }
