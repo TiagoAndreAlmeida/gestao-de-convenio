@@ -51,7 +51,7 @@ jobs:
           SPRING_DATASOURCE_PASSWORD: postgres
 
       - name: Upload JAR
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: application
           path: target/*.jar
