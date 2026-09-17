@@ -70,14 +70,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: List workflow artifacts
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh api \
-            repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts \
-            --jq '.artifacts[] | [.name, .id, .expired] | @tsv'
-
       - name: Download JAR
         uses: actions/download-artifact@v5
         with:
