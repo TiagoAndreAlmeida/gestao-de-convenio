@@ -43,8 +43,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Run tests
-        run: ./mvnw test
+      - name: Run Builds + tests
+        run: ./mvnw clean package
         env:
           SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/gestaoconvenios
           SPRING_DATASOURCE_USERNAME: postgres
@@ -55,6 +55,7 @@ jobs:
         with:
           name: application
           path: target/*.jar
+          if-no-files-found: error
 
   build-and-push:
     needs: test
