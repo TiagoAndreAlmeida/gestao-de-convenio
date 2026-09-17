@@ -1,0 +1,46 @@
+services:
+
+  api:
+    image: ghcr.io/tiagoandrealmeida/gestao-de-convenio:main
+    container_name: gestao-convenios-api
+    restart: no
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    networks:
+      - shared_network
+      - gestao_convenios_network
+
+  postgres:
+    image: postgres:17
+    container_name: gestao-convenios-postgres
+    restart: no
+
+    environment:
+      POSTGRES_DB: gestaoconvenios
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    volumes:
+      - gestao_convenios_postgres_data:/var/lib/postgresql/data
+
+    networks:
+      - gestao_convenios_network
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d gestaoconvenios"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  shared_network:
+    external: true
+
+  gestao_convenios_network:
+    name: gestao_convenios_network
+
+volumes:
+  gestao_convenios_postgres_data:
