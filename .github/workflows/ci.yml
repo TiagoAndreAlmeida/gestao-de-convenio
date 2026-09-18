@@ -105,10 +105,10 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: production
+      name: Production
       url: https://gestao-convenios-api.upafiliado.com.br/swagger-ui/index.html
 
-    concurrency: production
+    concurrency: Production
 
     steps:
       - name: Configure SSH
@@ -127,9 +127,9 @@ jobs:
 
       - name: Deploy to VPS
         env:
-          VPS_HOST: ${{ vars.VPS_HOST }}
-          VPS_USER: ${{ vars.VPS_USER }}
-          VPS_APP_PATH: ${{ vars.VPS_APP_PATH }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_APP_PATH: ${{ secrets.VPS_APP_PATH }}
         run: |
           ssh \
             -i ~/.ssh/deploy_key \
